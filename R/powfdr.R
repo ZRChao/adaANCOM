@@ -8,6 +8,8 @@
 #' @param a the significant level.
 #'
 #' @return a vector consist of recall, precision, and F1 score squentially.
+#' @export
+#'
 
 powfdr = function(p.adj, dif = NULL, a = 0.05){
   reject = which(p.adj <= a)

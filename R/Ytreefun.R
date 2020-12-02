@@ -12,8 +12,10 @@
 #' tree <- phy_tree(COMBO)
 #' ytree <- Ytreefun(otu.tab, tree)
 #' length(ytree)
-#' @import phyloseq
 #' @export
+#' @import phyloseq
+#'
+#'
 
 
 Ytreefun <- function(otu.tab, tree) {

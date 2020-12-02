@@ -4,7 +4,10 @@
 #'
 #' @param Yotu a list, containing each count matrix on the subtree.
 #' @param tree the phylogenetic tree.
+#' @return a OTU count table on the leafs.
 #' @note also see \link{Ytreefun}.
+#'
+#' @export
 #'
 
 Ytree2otu <- function(Yotu, tree) {

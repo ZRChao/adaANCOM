@@ -8,7 +8,8 @@
 #'
 #' @return p-value for the test.
 #'
-#' @import stats
+#' @export
+#'
 
 LiK_DM <- function(X, fdm=NULL, fzidm=NULL) { # dm vs zidm
   ry <- rowSums(X)

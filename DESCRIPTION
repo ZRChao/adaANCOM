@@ -1,6 +1,6 @@
 Package: adaANCOM
 Title: adaANCOM
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R: 
     person(given = "Chao",
            family = "Zhou",
@@ -18,4 +18,4 @@ Imports:
     ape,
     stats
 Depends: 
-    R (>= 2.10)
+    R (>= 3.5.0)

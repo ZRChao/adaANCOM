@@ -6,6 +6,8 @@
 #' @param alpha the corresponding parameters.
 #'
 #' @return the log-likelihood value for DM.
+#' @export
+#'
 
 loglik_dm <- function(X, alpha) {
   N <- nrow(X)

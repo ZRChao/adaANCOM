@@ -5,8 +5,9 @@
 #' @param X a data frame or matrix containing the count data. Rows of the matrix represent observations and columns are the components.
 #' @note also see \link{LiK_MN} or \link{LiK_DM}.
 #' @return p-value for the test and the log-likelihood value
-#'
+#' @export
 #' @import stats
+#'
 
 LikRT <- function(X) {
   Y <- X

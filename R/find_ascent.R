@@ -10,8 +10,8 @@
 #' tree <- phy_tree(COMBO)
 #' find_ascent(tree$edge, 1)
 #' @export
-#' @import phyloseq
 #'
+
 
 
 find_ascent <- function(edge, v) {

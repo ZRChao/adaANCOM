@@ -6,7 +6,9 @@
 #' @param fdm the log-likelihood value of DM.
 #'
 #' @return p-value for the test.
-#' @import stats
+#' @export
+#'
+#'
 
 LiK_MN <- function(X,  fdm=NULL) { # mn vs dm
   ry <- rowSums(X)

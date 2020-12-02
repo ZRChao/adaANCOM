@@ -27,6 +27,7 @@
 #' fit <- adaANCOM(otu=t(data.frame(otu.tab)), Y=group, tree=tree, tfun = t.test, smooth=0.5)
 #' summary(fit)
 #' @export
+#'
 
 
 

@@ -10,7 +10,7 @@
 #' tree <- phy_tree(COMBO)
 #' find_descent(tree$edge, 55)
 #' @export
-#' @import phyloseq
+#'
 
 find_descent <- function(edge, v) {
   # find all the descents

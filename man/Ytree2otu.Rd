@@ -11,6 +11,9 @@ Ytree2otu(Yotu, tree)
 
 \item{tree}{the phylogenetic tree.}
 }
+\value{
+a OTU count table on the leafs.
+}
 \description{
 Given a list which consist of all internal counts, we extract the count of the leaves.
 }

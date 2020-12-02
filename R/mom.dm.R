@@ -5,6 +5,8 @@
 #' @param X a data frame or matrix containing the count data. Rows of the matrix represent observations and columns are the components
 #'
 #' @return a estimated vector
+#' @export
+#'
 
 
 mom.dm <- function(X) {

@@ -9,7 +9,8 @@
 #' @param conv the precison for stop the estimation.
 #'
 #' @return a list with the estimated parameters and log-likelihood value.
-#' @import stats
+#' @export
+
 
 
 est.zidm.EM <- function(X, init.a=NULL, init.pi=NULL, iter=100, conv=1e-6) {

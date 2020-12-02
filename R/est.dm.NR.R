@@ -8,6 +8,7 @@
 #' @param conv the precison for stop the estimation.
 #'
 #' @return a list with the estimated parameters and log-likelihood value.
+#' @export
 
 est.dm.NR <- function(X, init = NULL, iter = 1000, conv = 1e-6) {
   K <- ncol(X)

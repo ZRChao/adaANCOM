@@ -8,7 +8,7 @@
 #' @param outlier If true, remove the outliers, otherwise keep them.
 #'
 #' @return a list, one is the smoothed data on each internal nodes and other one is a matrix which consist of all internal and leaf nodes.
-#'
+#' @export
 #'
 
 Smooth_Tree <- function(Yotu, tree, type='DM', rel=F, outlier=F) {

@@ -9,6 +9,7 @@
 #' @param outlier If true, remove the outliers, otherwise keep them.
 #'
 #' @return smoothed data matrix
+#' @export
 #'
 
 

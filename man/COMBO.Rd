@@ -19,7 +19,6 @@ and metadata that provide information about the samples such as BMI and measurem
 \examples{
 library(phyloseq)
 data(COMBO)
-COMBO
 }
 \references{
 Wu, G.D., Chen, J., Hoffmann, C., Bittinger, K., Chen, Y.-Y., Keilbaugh, S.A., et al.: Linking long-term dietary patterns with gut microbial enterotypes. Science 334(6052), 105–108 (2011)
