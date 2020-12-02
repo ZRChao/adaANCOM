@@ -8,4 +8,5 @@ We introduced adaANCOM for microbiome differential abundance analysis by incorpo
 devtools::install_github("ZRChao/adaANCOM")  
 ```
 
-More examples could be found in the functions ```adaANCOM```. Any suggestions or problem, please contact _Chao Zhou~（Supdream8@sjtu.edu.cn_ 
+More examples could be found in the functions ```adaANCOM```. 
+Any suggestions or problem, please contact _Chao Zhou~（Supdream8@sjtu.edu.cn)_ 
