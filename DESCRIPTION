@@ -1,0 +1,21 @@
+Package: adaANCOM
+Title: adaANCOM
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Chao",
+           family = "Zhou",
+           role = c("aut", "cre"),
+           email = "Supdream8@sjtu.edu.cn")
+Description: Differential abundance analysis of microbiome data incorporating phylogeny.
+License: GPL-3
+Encoding: UTF-8
+Language: es
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    phyloseq,
+    ape,
+    stats
+Depends: 
+    R (>= 2.10)
