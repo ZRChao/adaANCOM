@@ -1,7 +1,11 @@
-# adaANCOM
+## adaANCOM
 
 We introduced adaANCOM for microbiome differential abundance analysis by incorporating phylengy.
 
-```{r}
-devtools::install_github("liudoubletian/phyloMDA")  
+## Installation
+
+```R
+devtools::install_github("ZRChao/adaANCOM")  
 ```
+
+More examples could be found in the functions ```adaANCOM```
