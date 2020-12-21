@@ -22,3 +22,19 @@ smoothed data matrix
 We used the posterior mean transfromation to smooth zero. If the prior is not given,
 we could use likelihood ratio test to chooce the best fitted model and the corresponding posterior mean to smooth zeros.
 }
+\examples{
+
+# data generation
+N <- 100
+D1 <- D2 <- round(runif(N, 1, 100))
+Pi <- rzidirichlet(N=N, alpha =  c(3, 6), pi=0.1)
+which(Pi[,1]==0) # true zero
+X1 <- matrix(NA, N, 2)
+for(i in 1:N) X1[i, ] <- rmultinom(1, D1[i], prob=Pi[i, ])
+
+prop <- Smooth_X(X1, type='MIX', rel=TRUE, outlier=FALSE)
+
+res <- Outliers(X1, prop)
+res
+
+}

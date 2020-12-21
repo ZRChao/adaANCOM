@@ -12,19 +12,14 @@
 #' @export
 #'
 
+
 find_descent <- function(edge, v) {
   # find all the descents
-  childs <- c()
-  root <- min(edge[,1])
-  if(v<root){
-    childs <- v # return himself
-  }else{
-    par <- v
-    while(length(par) >0){
-      ch <- unlist(sapply(par, function(x) edge[edge[,1]==x,2]))
-      par <- ch[ch>root]
-      childs <- c(childs, ch)
-    }
+  childs <- c(); par <- v
+  while(length(par) >0){
+    ch <- unlist(sapply(par, function(x) edge[edge[,1]==x,2]))
+    par <- ch[ch>min(edge[,1])]
+    childs <- c(childs, ch)
   }
   childs
 }

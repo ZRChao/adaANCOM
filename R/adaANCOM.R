@@ -48,8 +48,8 @@ adaANCOM = function(otu=NULL, Y = NULL, tree, tfun = t.test, smooth=0.5, alpha=0
   if(length(intersect(otu_names, tab_names)) != p) stop('Mismatch OTU between table and tree.')
 
   if(is.matrix(otu) | is.data.frame(otu)) {
-    otu1 <- otu[Y==G1, ]; res1 <- Ytreefun(otu1, tree)
-    otu2 <- otu[Y!=G1, ]; res2 <- Ytreefun(otu2, tree)
+    otu1 <- otu[Y==G1, ]; res1 <- Ytreefun(otu1, tree)[[1]]
+    otu2 <- otu[Y!=G1, ]; res2 <- Ytreefun(otu2, tree)[[1]]
     Yotu1 <- res1;
     Yotu2 <- res2;
     # cat('# Start analysis for', p, ' OTUs of one table .\n')

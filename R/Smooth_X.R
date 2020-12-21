@@ -9,6 +9,21 @@
 #' @param outlier If true, remove the outliers, otherwise keep them.
 #'
 #' @return smoothed data matrix
+#' @examples
+#'
+#' # data generation
+#' N <- 100
+#' D1 <- D2 <- round(runif(N, 1, 100))
+#' Pi <- rzidirichlet(N=N, alpha =  c(3, 6), pi=0.1)
+#' which(Pi[,1]==0) # true zero
+#' X1 <- matrix(NA, N, 2)
+#' for(i in 1:N) X1[i, ] <- rmultinom(1, D1[i], prob=Pi[i, ])
+#'
+#' prop <- Smooth_X(X1, type='MIX', rel=TRUE, outlier=FALSE)
+#'
+#' res <- Outliers(X1, prop)
+#' res
+#'
 #' @export
 #'
 
@@ -46,8 +61,8 @@ Smooth_X <- function(X, type='DM', rel=F, outlier=F) {
   if(type == 'MIX')  {
     em <- est.zidm.EM(X)
     nr <- est.dm.NR(X)
-    p1 <- LiK_DM(X, fdm=nr[[2]], fzidm=em[[3]])
-    p2 <- LiK_MN(X, fdm=nr[[2]])
+    p1 <- lrt_DM2ZIDM(X, fdm=nr[[2]], fzidm=em[[3]])
+    p2 <- lrt_MN2DM(X, fdm=nr[[2]])
     pi <- em[[2]]
     if(p1<0.05){
       type <- 'ZIDM'; a <- em[[1]]
@@ -61,7 +76,7 @@ Smooth_X <- function(X, type='DM', rel=F, outlier=F) {
   if(type == 'DM')  {
     if(is.null(a)) nr <- est.dm.NR(X)
     a <- nr[[1]]
-    p2 <- LiK_MN(X, fdm=nr[[2]])
+    p2 <- lrt_MN2DM(X, fdm=nr[[2]])
     if(sum(a)>99 | p2>0.05)  a <- 0.5
     if(sum(a) < 1) a <- 0.5
     Y <- t(t(X)) + a

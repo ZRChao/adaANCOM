@@ -20,22 +20,21 @@
 
 Ytreefun <- function(otu.tab, tree) {
   # calculate counts on each subtree
-  find_descent <- function(edge, v) {
-    # find all the descents
-    childs <- c(); par <- v
-    while(length(par) >0){
-      ch <- unlist(sapply(par, function(x) edge[edge[,1]==x,2]))
-      par <- ch[ch>min(edge[,1])]
-      childs <- c(childs, ch)
-    }
-    childs
-  }
+  edge <- tree$edge
+  otus <- as.character(tree$tip.label);
+  n.otu <- ncol(otu.tab)
+  N <- nrow(otu.tab)
+  if(is.null(otus)) otus <- tree$tip.label <- as.character(1:n.otu)
+  otu1 <- colnames(otu.tab)
+  if(is.null(otu1)) otu1 <- colnames(otu.tab) <- as.character(1:n.otu)
+  if(is.null(tree$node.label)) taxa <- tree$node.label <- as.character((n.otu+1):(n.otu+tree$Nnode))
+  if(length(intersect(otu1, otus)) != n.otu) stop('Table and Tree tips not mathced ! ')
+  otu.tab <- as.matrix(otu.tab[, otus])
 
-  n.otu  <- length(tree$tip.label)
   node_order <- sapply(1:tree$Nnode, function(x) sum(find_descent(tree$edge, x+n.otu)<=n.otu))
   node_order <- order(node_order) + n.otu
-  all_table  <- matrix(NA, nrow(otu.tab), n.otu+tree$Nnode)
-  all_table[, 1:c(n.otu+1)] <- cbind(as.matrix(otu.tab[, tree$tip.label]), rowSums(otu.tab))
+  all_table  <- matrix(NA, N, n.otu+tree$Nnode)
+  all_table[, 1:c(n.otu+1)] <- cbind(otu.tab, rowSums(otu.tab))
   ytree <- list()
   for(n in node_order) {
     chi <- tree$edge[tree$edge[,1]==n,2]
@@ -43,5 +42,6 @@ Ytreefun <- function(otu.tab, tree) {
     all_table[, n] <- ry <- rowSums(y)
   }
   names(ytree) <- tree$node.label
-  ytree
+  res <- list(Ytree=ytree, allcount=all_table)
+  res
 }
