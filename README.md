@@ -6,6 +6,7 @@ We introduced adaANCOM for microbiome differential abundance analysis by incorpo
 
 ```R
 devtools::install_github("ZRChao/adaANCOM")  
+library(adaANCOM)
 ```
 ## Usage
 
