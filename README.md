@@ -35,7 +35,7 @@ est2
 ```
 
 
-* Model selection, return the p-value for testing $$MN \subset DM \subset ZIDM$$, and the loglikelihood of this three models, 
+* Model selection with two steps likelihood ratio test, return the p-value for testing $MN \subset DM \subset ZIDM$, and the loglikelihood of this three models, 
 
 ```R
 LikRTest(X1)
