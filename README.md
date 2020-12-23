@@ -56,36 +56,17 @@ res
 ```
 
 
-* Following we used the ```COMBO``` data to illustrate the differential abundance testing on the tree.
-
+* Next, we illustrate the differential abundance testing procedure based on the example data
 
 ```R
 library(phyloseq)
-library(adaANCOM)
-data(COMBO)
-COMBO  # data information
-
-otu.tab <- t(data.frame(otu_table(COMBO)))
-tree <- phy_tree(COMBO)
-group <- sample_data(COMBO)$bmicat1norm2ow3ob
-group[group==3] <- 2
-```
-
-
-* Data transformation on the tree
-
-```R
-ytreeprop <- PosteriorMeanTrans(otu.tab, tree)
-smoothed_L <- ytreeprop$probability$L
-smoothed_V <- ytreeprop$probability$V
-rowSums(smoothed_L)
-```
-
-* The differential abundance testing procedure
-
-```R
-fit <- adaANCOM(otu=otu.tab, Y=group, tree=tree, tfun = t.test, smooth=0.5)
-summary(fit)
+data(example)
+data <- example_data$data
+fit <- adaANCOM(otu=data.frame(otu_table(data)), 
+                Y=sample_data(data)$group, 
+                tree=phy_tree(data), tfun = t.test, smooth=0.5)
+fit$L # results for the leaves
+fit$V # results for the internal nodes
 ```
 
 More examples could be found each functions in the package. 
