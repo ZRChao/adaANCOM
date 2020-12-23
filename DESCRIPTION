@@ -13,9 +13,9 @@ Language: es
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
-Imports: 
-    phyloseq,
-    ape,
-    stats
-Depends: 
-    R (>= 3.5.0)
+Imports: phyloseq, ape, stats
+Depends: R (>= 3.5.0)
+NeedsCompilation: no
+Packaged: 2020-12-23 14:17:30 UTC; zhouchao
+Author: Chao Zhou [aut, cre]
+Maintainer: Chao Zhou <Supdream8@sjtu.edu.cn>

@@ -444,107 +444,109 @@ for(i in 1:N) X1[i, ] &lt;- rmultinom(1, D1[i], prob=Pi[i, ])</code></pre>
 </ul>
 <pre class="r"><code>est0 &lt;- mom.dm(X1) # moment methods for DM
 est0</code></pre>
-<pre><code>## [1] 1.308065 2.637909</code></pre>
+<pre><code>## [1] 1.277959 2.798180</code></pre>
 <pre class="r"><code>est1 &lt;- est.dm.NR(X1) # Newton-Raphson for DM
 est1</code></pre>
 <pre><code>## $alpha
-## [1] 1.199755 2.615308
+## [1] 1.217056 2.736059
 ## 
 ## $loglik
-## [1] -333.3439</code></pre>
+## [1] -334.3863</code></pre>
 <pre class="r"><code>est2 &lt;- est.zidm.EM(X1) # expectation-maximization (EM) for ZIDM
 est2</code></pre>
 <pre><code>## $alpha
-## [1] 2.787355 4.981806
+## [1] 2.307276 4.277319
 ## 
 ## $pi
-## [1] 0.09500772
+## [1] 0.09288069
 ## 
 ## $loglik
-## [1] -318.6608</code></pre>
+## [1] -326.0772</code></pre>
 <ul>
 <li>Model selection, return the p-value for testing <span class="math inline">\(MN \subset DM \subset ZIDM\)</span>, and the loglikelihood of this three models,</li>
 </ul>
 <pre class="r"><code>LikRTest(X1)</code></pre>
 <pre><code>## $pvalue
-## [1]  5.899521e-08 1.439913e-152
+## [1]  4.501437e-05 1.116384e-152
 ## 
 ## $loglik
-## [1] -679.0969 -332.9658 -318.2677</code></pre>
+## [1] -680.4030 -334.0178 -325.6941</code></pre>
 <ul>
 <li>Posterior mean transformation, return a matrix with the transformed relative data</li>
 </ul>
 <pre class="r"><code>prop &lt;- Smooth_X(X1, type='MIX', rel=TRUE)
 head(prop)</code></pre>
 <pre><code>##           [,1]      [,2]
-## [1,] 0.3256966 0.6743034
-## [2,] 0.4604876 0.5395124
-## [3,] 0.4444588 0.5555412
-## [4,] 0.3253709 0.6746291
-## [5,] 0.4554629 0.5445371
-## [6,] 0.3939143 0.6060857</code></pre>
+## [1,] 0.3770973 0.6229027
+## [2,] 0.3333333 0.6666667
+## [3,] 0.4469980 0.5530020
+## [4,] 0.5000000 0.5000000
+## [5,] 0.3911628 0.6088372
+## [6,] 0.5001771 0.4998229</code></pre>
 <ul>
 <li>Outlier detection, return the index of the outliers and values of the log-ratio for the transformed data</li>
 </ul>
 <pre class="r"><code>res &lt;- Outliers(X1, prop)
 res</code></pre>
 <pre><code>## $outliers
-##  [1]  7 27 42 47 53 54 63 66 68 72 88
+##  [1]  7 27 42 47 54 63 66 68 72 74 85 88
 ## 
 ## $ratios
-##  [1] -0.72771402 -0.15837975 -0.22308529 -0.72919720 -0.17862188 -0.43088809
-##  [7] -0.95317993 -0.46161122 -1.09861229 -0.36197876  0.05237277 -1.63056785
-## [13] -0.50366474 -0.91629073 -1.41172239 -0.25022476  0.25633500 -0.24970853
-## [19] -0.49347807 -1.74846631 -0.78173965 -1.71396683 -0.85121678 -0.82264562
-## [25] -0.61462192 -2.30543949 -1.24206854  1.38629436  1.38629436 -0.99233410
-## [31] -0.88494336  0.45903885 -1.76557653 -0.22935594 -2.05222561 -0.43088809
-## [37] -0.82759289  0.48079884  0.30120992 -0.44127193 -0.11210385 -1.06700451
-## [43] -0.82150844  0.17175404 -0.02753343 -0.80673874 -1.20463884  1.11024680
-## [49] -0.67141094 -0.51082562 -0.36917723 -1.93814891 -0.87789797 -0.77477423
-## [55] -0.75112048 -0.19489187 -0.94232094  0.43336094 -0.96140228 -0.12745029
-## [61]  0.40182215 -0.28617148 -1.44987122  0.00000000 -0.39023510  1.79175947
-## [67] -0.91629073 -0.43594700 -0.28768207  0.00000000  1.04904111 -1.72204599
-## [73] -1.94591015 -0.39069186 -1.84574969 -0.80787352 -2.10996549 -0.29720965
-## [79] -0.78929909 -1.53251495 -1.24473405 -1.38301206 -0.73674679  0.00000000
-## [85]  0.09554954 -0.12568176 -0.67141094 -1.38363661 -0.40546511
+##  [1] -0.5018871078 -0.6931471806 -0.2128076881  0.0000000000 -0.4424271457
+##  [6]  0.0007083297 -1.0450821647 -0.4612142801 -0.5274987902 -0.1588073468
+## [11] -0.0425665551 -1.1206939976 -0.5591685130 -0.7885291585 -1.6048452026
+## [16] -0.4276093494 -0.0287080137 -0.3908014452 -0.4962214044 -1.7614080288
+## [21] -0.7132646769 -1.7077344560 -0.5810896813 -0.8077970278 -0.4802144950
+## [26] -2.6721984865 -1.2555989356  0.0432962720  0.0953504104 -0.5802134884
+## [31] -1.1156415810  0.3413811264 -2.5699859671 -0.1498330627 -1.9513546365
+## [36]  0.2742667349 -1.2865491778  0.2370696978  0.6111733613 -0.6484848619
+## [41] -0.4011318801 -0.8864846788 -1.7917594692  0.6931471806 -0.1032457022
+## [46] -0.3487347627 -0.7322628666  0.9550422767 -2.0015256033 -1.3377971957
+## [51] -0.7353064968 -0.3779172421 -1.7494888751 -0.9895935241 -0.7566494512
+## [56]  0.0696560701 -0.2133569171 -0.8900568143 -1.0986122887 -0.7322628666
+## [61] -0.4612142801  0.8096560303  0.0006614124 -2.4487327136  0.0007083297
+## [66]  0.1505210298 -0.7254706701 -0.7633486617 -1.0244055871 -1.3292431244
+## [71]  0.8424764096 -1.7150546857 -1.7917594692 -1.2266687171 -0.5802134884
+## [76] -1.9480812501 -0.5482078947 -0.9162907319 -1.6094379124  0.0026528619
+## [81] -0.8386749045 -1.7628044056 -0.0516306536  1.0155212080 -0.2774487672
+## [86] -0.3070303557 -2.2239417569 -0.2876820725
 ## 
 ## $abnormal
-##  [1] -8.699675 -7.288990 -2.609649 -9.152290      -Inf -9.229099 -4.580713
-##  [8] -6.959612 -8.743117 -6.523458 -5.944395</code></pre>
+##  [1] -4.544232 -7.981705 -6.704861 -5.678510 -6.867191      -Inf -3.621943
+##  [8] -6.354939 -6.033257      -Inf -3.749783 -2.761263</code></pre>
 <ul>
-<li>Following we used the <code>COMBO</code> data to illustrate the differential abundance testing on the tree.</li>
+<li>Next, we illustrate the differential abundance testing on the tree based on the example data</li>
 </ul>
 <pre class="r"><code>library(phyloseq)
-library(adaANCOM)
-data(COMBO)
-COMBO  # data information</code></pre>
-<pre><code>## phyloseq-class experiment-level object
-## otu_table()   OTU Table:         [ 62 taxa and 98 samples ]
-## sample_data() Sample Data:       [ 98 samples by 231 sample variables ]
-## tax_table()   Taxonomy Table:    [ 62 taxa by 9 taxonomic ranks ]
-## phy_tree()    Phylogenetic Tree: [ 62 tips and 61 internal nodes ]</code></pre>
-<pre class="r"><code>otu.tab &lt;- t(data.frame(otu_table(COMBO)))
-tree &lt;- phy_tree(COMBO)
-group &lt;- sample_data(COMBO)$bmicat1norm2ow3ob
-group[group==3] &lt;- 2</code></pre>
-<ul>
-<li>Data transformation on the tree</li>
-</ul>
-<pre class="r"><code>ytreeprop &lt;- PosteriorMeanTrans(otu.tab, tree)
-smoothed_L &lt;- ytreeprop$probability$L
-smoothed_V &lt;- ytreeprop$probability$V
-rowSums(smoothed_L)</code></pre>
-<pre><code>##  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-## [39] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
-## [77] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1</code></pre>
-<ul>
-<li>The differential abundance testing procedure</li>
-</ul>
-<pre class="r"><code>fit &lt;- adaANCOM(otu=otu.tab, Y=group, tree=tree, tfun = t.test, smooth=0.5)
-summary(fit)</code></pre>
-<pre><code>##   Length Class      Mode
-## V 3      data.frame list
-## L 3      data.frame list</code></pre>
+library(data.table)
+data(example)
+data &lt;- example_data$data
+fit &lt;- adaANCOM(otu=data.frame(otu_table(data)), 
+                Y=sample_data(data)$group, 
+                tree=phy_tree(data), tfun = t.test, smooth=0.5)
+data.table(fit$L)</code></pre>
+<pre><code>##        otu      p.value   deg
+##  1:  OTU_1 8.809676e-01 FALSE
+##  2:  OTU_2 8.809676e-01 FALSE
+##  3:  OTU_3 5.048874e-02 FALSE
+##  4:  OTU_4 2.719568e-25 FALSE
+##  5:  OTU_5 2.060812e-11 FALSE
+##  6:  OTU_6 2.890715e-16 FALSE
+##  7:  OTU_7 1.965896e-17 FALSE
+##  8:  OTU_8 3.295955e-18 FALSE
+##  9:  OTU_9 7.449108e-17 FALSE
+## 10: OTU_10 1.833675e-17 FALSE</code></pre>
+<pre class="r"><code>data.table(fit$V)</code></pre>
+<pre><code>##    taxa      p.value        p.adj
+## 1:   11 8.073647e-01 8.809676e-01
+## 2:   12 5.048874e-02 2.271993e-01
+## 3:   13 8.809676e-01 8.809676e-01
+## 4:   14 2.911361e-32 2.620225e-31
+## 5:   15 2.793830e-01 8.381489e-01
+## 6:   16 5.430869e-01 8.767481e-01
+## 7:   17 5.844988e-01 8.767481e-01
+## 8:   18 3.801746e-01 8.553929e-01
+## 9:   19 7.094116e-01 8.809676e-01</code></pre>
 <p>More examples could be found each functions in the package.</p>
 <p>Any suggestions or problem, please contact <em>Chao Zhou（<a href="mailto:Supdream8@sjtu.edu.cn" class="email">Supdream8@sjtu.edu.cn</a>)</em> .</p>
 </div>
