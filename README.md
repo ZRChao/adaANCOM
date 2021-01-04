@@ -10,7 +10,7 @@ library(adaANCOM)
 ```
 ## Usage
 
-* Data generation from zero-inflated Dirichlet multinomial (ZIDM) distribution.
+* Data generation from zero-inflated Dirichlet multinomial (ZIDM) distribution
 
 ```R
 N <- 100
@@ -35,7 +35,7 @@ est2
 ```
 
 
-* Model selection with two steps likelihood ratio test, return the p-value for testing `MN < DM < ZIDM`, and the loglikelihood of this three models, 
+* Model selection by likelihood ratio testing, return the p-value for testing `MN < DM < ZIDM`, and the loglikelihood of this three models 
 
 ```R
 LikRTest(X1)
@@ -60,7 +60,7 @@ res
 
 ```R
 library(phyloseq)
-data(example)
+data(example) # phyloseq object
 data <- example_data$data
 fit <- adaANCOM(otu=data.frame(otu_table(data)), 
                 Y=sample_data(data)$group, 
@@ -68,7 +68,5 @@ fit <- adaANCOM(otu=data.frame(otu_table(data)),
 fit$L # results for the leaves
 fit$V # results for the internal nodes
 ```
-
-More examples could be found each functions in the package. 
 
 Any suggestions or problem, please contact _Chao Zhou（Supdream8@sjtu.edu.cn)_ .
