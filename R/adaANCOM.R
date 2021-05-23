@@ -108,13 +108,15 @@ adaANCOM = function(otu=NULL, Y = NULL, tree, tfun = t.test, smooth=0.5, alpha=0
   }
   taxa_info$p.value <- taxa.pv
   taxa_info$p.adj   <- taxa.pvj <- p.adjust(taxa.pv, method = 'fdr')
-
+  if(taxa.pvj[1]<0.1) cat('Bottom-up!\n')
+  
   ## test for terminal nodes
   potu <- rep(1, p); deg <- rep(F, p)
   for(i in 1:p) {
     b0 <- find_ascent(edge, i) # delete itself
     b <- b0[-1]
     (pa<- b[which(taxa.pvj[b-p]<=a)])
+    if(taxa.pvj[1]<0.1) {pa <- b[which(taxa.pvj[b-p]>a)] }# Date 5.22 bottom-up
     (na<- length(pa))
     if(na==0) {
       potu[i] <- taxa.pv[b[1]-p]
