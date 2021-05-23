@@ -1,12 +1,14 @@
 Package: adaANCOM
 Title: adaANCOM
-Version: 0.1.1
+Version: 0.2.1
 Authors@R: 
     person(given = "Chao",
            family = "Zhou",
            role = c("aut", "cre"),
            email = "Supdream8@sjtu.edu.cn")
-Description: Differential abundance analysis of microbiome data incorporating phylogeny.
+Description: Differential abundance analysis of microbiome data incorporating phylogeny. 
+    We add a judgement step to modify the reference searching to be suitbale for bottom-up manner.
+
 License: GPL-3
 Encoding: UTF-8
 Language: es
