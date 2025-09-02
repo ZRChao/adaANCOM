@@ -238,8 +238,8 @@ est.zidm.EM <- function(X, init.a=NULL, init.pi=NULL, iter=100, conv=1e-6) {
       g <- c(N*(1-b)*da[1] + sum((1-delta)*A), N*(1-b)*da[2] + sum((1-delta)*B))
       ta<- trigamma(sum(a))
       H <- N*(1-b)*matrix(c(ta - trigamma(a[1]), ta, ta, ta - trigamma(a[2])),2,2)
-      H1 <- try(solve(H), silent = T)
-      if(class(H1)=='try-error') H1 <- matrix(c(1,0,0,1), 2)
+      t1 <- try(H1 <- solve(H), silent=T)
+      if(class(t1)[[1]]=='try-error') H1 <- matrix(c(1,0,0,1), 2)
       a <- a - as.numeric(H1%*%t(t(g)))
       a[a<0] <- 0.5
       loglik1 <- loglik_zidm(Y, a, b)
